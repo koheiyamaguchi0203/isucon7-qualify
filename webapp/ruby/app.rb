@@ -322,6 +322,7 @@ class App < Sinatra::Base
   end
 
   get '/icons/:file_name' do
+    puts "hoge"
     # file_name = params[:file_name]
     # statement = db.prepare('SELECT * FROM image WHERE name = ?')
     # row = statement.execute(file_name).first
