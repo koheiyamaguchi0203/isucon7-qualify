@@ -309,6 +309,7 @@ class App < Sinatra::Base
       statement = db.prepare('UPDATE user SET avatar_icon = ? WHERE id = ?')
       statement.execute(avatar_name, user['id'])
       statement.close
+      File.write()
     end
 
     if !display_name.nil? || !display_name.empty?
@@ -321,17 +322,17 @@ class App < Sinatra::Base
   end
 
   get '/icons/:file_name' do
-    file_name = params[:file_name]
-    statement = db.prepare('SELECT * FROM image WHERE name = ?')
-    row = statement.execute(file_name).first
-    statement.close
-    ext = file_name.include?('.') ? File.extname(file_name) : ''
-    mime = ext2mime(ext)
-    if !row.nil? && !mime.empty?
-      content_type mime
-      return row['data']
-    end
-    404
+    # file_name = params[:file_name]
+    # statement = db.prepare('SELECT * FROM image WHERE name = ?')
+    # row = statement.execute(file_name).first
+    # statement.close
+    # ext = file_name.include?('.') ? File.extname(file_name) : ''
+    # mime = ext2mime(ext)
+    # if !row.nil? && !mime.empty?
+    #   content_type mime
+    #   return row['data']
+    # end
+    # 404
   end
 
   private
